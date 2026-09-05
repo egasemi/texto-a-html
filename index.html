@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pegá texto desde el portapapeles y descargalo como un archivo HTML listo para abrir o compartir."
+    />
+    <meta name="theme-color" content="#10263d" />
+    <title>Texto a HTML</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand" aria-label="Texto a HTML">
+        <span class="brand-mark" aria-hidden="true">T<span>→</span>H</span>
+        <div>
+          <h1>Texto a HTML</h1>
+          <p>Convertí texto plano en un archivo web.</p>
+        </div>
+      </div>
+      <p class="privacy-note">
+        <span aria-hidden="true">●</span>
+        El texto no sale de tu dispositivo
+      </p>
+    </header>
+
+    <main class="workspace">
+      <section class="panel editor-panel" aria-labelledby="editor-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Entrada</p>
+            <h2 id="editor-title">Tu texto</h2>
+          </div>
+          <button class="button button-secondary" id="paste-button" type="button">
+            Pegar del portapapeles
+          </button>
+        </div>
+
+        <label class="sr-only" for="source-text">Texto para convertir</label>
+        <textarea
+          id="source-text"
+          placeholder="Pegá o escribí acá el texto que querés convertir…"
+          spellcheck="true"
+          autofocus
+        ></textarea>
+
+        <div class="text-stats" aria-live="polite">
+          <span id="character-count">0 caracteres</span>
+          <span id="word-count">0 palabras</span>
+        </div>
+
+        <div class="settings-grid">
+          <label class="field">
+            <span>Título de la pestaña</span>
+            <input id="document-title" type="text" value="Documento" maxlength="120" />
+          </label>
+
+          <label class="field">
+            <span>Nombre del archivo</span>
+            <input
+              id="file-name"
+              type="text"
+              value="documento.html"
+              maxlength="120"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="button button-ghost" id="clear-button" type="button" disabled>
+            Borrar
+          </button>
+          <button class="button button-primary" id="download-button" type="button" disabled>
+            Descargar HTML
+          </button>
+        </div>
+
+        <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="panel-heading preview-heading">
+          <div>
+            <p class="eyebrow">Salida</p>
+            <h2 id="preview-title">Vista previa</h2>
+          </div>
+          <span class="file-badge" id="file-badge">documento.html</span>
+        </div>
+
+        <div class="browser-frame">
+          <div class="browser-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <div>vista previa local</div>
+          </div>
+          <iframe
+            id="preview-frame"
+            title="Vista previa del archivo HTML"
+            sandbox=""
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Los saltos de línea y caracteres especiales se conservan de forma segura.</p>
+      <p><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd> para descargar</p>
+    </footer>
+
+    <noscript>Esta herramienta necesita JavaScript habilitado para funcionar.</noscript>
+  </body>
+</html>
